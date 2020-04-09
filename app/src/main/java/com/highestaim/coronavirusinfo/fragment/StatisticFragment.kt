@@ -75,7 +75,7 @@ class StatisticFragment : BaseFragment() {
             headerDate.text = countryInfo?.date
             headerConfirmed.text = countryInfo?.confirmed?.toString()
             headerDeaths.text = countryInfo?.deaths?.toString()
-            headerRecovered.text = countryInfo?.confirmed?.toString()
+            headerRecovered.text = countryInfo?.recovered?.toString()
         }
     }
 }
