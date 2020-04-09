@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="grean">#32CD32</color>
+
+
+    <color name="gray">#8C8C8C</color>
+    <color name="red">#FF0000</color>
+
+    <color name="toolbar_gradient_color_1">#3E6FFA</color>
+    <color name="toolbar_gradient_color_2">#3659D3</color>
+
+    <color name="white">#FFFFFF</color>
+</resources>
