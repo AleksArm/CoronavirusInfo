@@ -2,6 +2,7 @@ package com.highestaim.coronavirusinfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.highestaim.coronavirusinfo.fragment.HomeFragment
 import com.highestaim.coronavirusinfo.fragment.StatisticFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openMainPage() {
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, StatisticFragment())
-            .addToBackStack(null).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, HomeFragment()).commitAllowingStateLoss()
     }
 }

@@ -1,4 +1,4 @@
-package com.highestaim.exitsheet.models
+package com.highestaim.coronavirusinfo.models
 
 
 import com.google.gson.annotations.SerializedName
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class CoronaInfoCountriesModel(
 
         @SerializedName("date")
-        val date: String?,
+        val date: String? = "",
 
         @SerializedName("confirmed")
         val confirmed: Int?,
@@ -15,5 +15,7 @@ data class CoronaInfoCountriesModel(
         val deaths: Int?,
 
         @SerializedName("recovered")
-        val recovered: Int
+        val recovered: Int?,
+
+        val toDay: Int?
 )

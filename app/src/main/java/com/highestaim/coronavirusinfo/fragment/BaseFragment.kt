@@ -10,7 +10,11 @@ import kotlinx.android.synthetic.main.fragment_toolbar.view.*
 
 abstract class BaseFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(getLayoutId(), container, false)
 
         view.toolbarTitle?.let {
@@ -19,15 +23,13 @@ abstract class BaseFragment : Fragment() {
         return view
     }
 
+    abstract override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 
-    abstract fun getLayoutId() : Int
 
-    abstract fun getTitle() : String
+    abstract fun getLayoutId(): Int
+
+    abstract fun getTitle(): String
 
     abstract fun setupToolbar()
 
-    fun replaceFragment(fragment: Fragment) {
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, fragment)
-            ?.addToBackStack(null)?.commitAllowingStateLoss()
-    }
 }

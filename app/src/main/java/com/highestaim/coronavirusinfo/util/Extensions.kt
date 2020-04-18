@@ -1,13 +1,12 @@
 package com.highestaim.coronavirusinfo.util
 
-import android.app.Activity
 import android.content.Context
-import android.util.DisplayMetrics
 import android.view.View
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.math.roundToInt
+import com.highestaim.coronavirusinfo.R
 
 
 fun EditText.clearText() {
@@ -32,4 +31,20 @@ fun View.show() {
 
 fun View.hide() {
     visibility = View.GONE
+}
+
+inline fun <T : View> T.onClick(crossinline func: T.() -> Unit) {
+    setOnClickListener { func() }
+}
+
+fun Fragment.replaceFragment(fragment: Fragment, addBackStack: Boolean) {
+    if (addBackStack) {
+        activity?.supportFragmentManager?.beginTransaction()?.addToBackStack(null)
+            ?.replace(R.id.fragmentContainer, fragment)
+            ?.commitAllowingStateLoss()
+    } else {
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentContainer, fragment)
+            ?.commitAllowingStateLoss()
+    }
 }

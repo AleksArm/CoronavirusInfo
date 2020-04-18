@@ -8,11 +8,11 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import com.highestaim.coronavirusinfo.R
+import com.highestaim.coronavirusinfo.dto.CoronavirusInfoDto
 import com.highestaim.coronavirusinfo.util.hide
 import com.highestaim.coronavirusinfo.util.initRecyclerView
 import com.highestaim.coronavirusinfo.util.show
 
-import com.highestaim.exitsheet.dto.CoronavirusInfoDto
 import kotlinx.android.synthetic.main.statistic_inof_adapter_view.view.*
 import kotlin.properties.Delegates
 

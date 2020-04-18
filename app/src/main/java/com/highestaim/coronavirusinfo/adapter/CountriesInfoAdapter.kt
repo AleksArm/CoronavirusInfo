@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.highestaim.coronavirusinfo.R
-import com.highestaim.exitsheet.models.CoronaInfoCountriesModel
+import com.highestaim.coronavirusinfo.models.CoronaInfoCountriesModel
 import kotlin.properties.Delegates
 
 class CountriesInfoAdapter : RecyclerView.Adapter<CountriesInfoAdapter.CountriesInfoViewHolder>(), AutoUpdatableAdapter {
@@ -35,8 +35,8 @@ class CountriesInfoAdapter : RecyclerView.Adapter<CountriesInfoAdapter.Countries
 
     inner class CountriesInfoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var dateAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.date)
-        var confirmedAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.confirmed)
-        var recoveredAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.recovered)
-        var deathsAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.deaths)
+        var confirmedAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.confirmedTextView)
+        var recoveredAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.recoveredTextView)
+        var deathsAppCompatTextView: AppCompatTextView? = itemView.findViewById(R.id.deathsTextView)
     }
 }

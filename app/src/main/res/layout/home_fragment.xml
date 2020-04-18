@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:text="Date"
+                android:textColor="@color/toolbar_gradient_color_1"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black_"
+                android:textSize="@dimen/_13sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/confirmedTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:gravity="center"
+            android:text="@string/coronavirus_cases"
+            android:textColor="@color/toolbar_gradient_color_1"
+            android:textSize="25sp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/confirmedTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/confirmedTitle"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black_"
+            android:textSize="30sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/confirmedToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/confirmedTextView"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black_"
+            android:textSize="20sp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/recoveredTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/confirmedToday"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:text="@string/recovered"
+            android:textColor="@color/grean"
+            android:textSize="25sp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/recoveredTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recoveredTitle"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black_"
+            android:textSize="30sp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deathsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recoveredTextView"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/deaths"
+            android:textColor="@color/red"
+            android:textSize="25sp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deathsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deathsTitle"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black_"
+            android:textSize="30sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deathsToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deathsTextView"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black_"
+            android:textSize="20sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/amContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deathsToday"
+            android:layout_marginTop="@dimen/_30sdp"
+            tools:ignore="MissingConstraints">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Armenia"
+                android:textSize="@dimen/_20sdp" />
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headerText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <TableRow>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="Confirmed"
+                        android:textColor="@color/toolbar_gradient_color_1"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/headerConfirmed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_65sdp"
+                        android:text="0"
+                        android:textColor="@color/black_"
+                        android:textSize="@dimen/_13sdp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="Recovered"
+                        android:textColor="@color/grean"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/headerRecovered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_65sdp"
+                        android:text="0"
+                        android:textColor="@color/black_"
+                        android:textSize="@dimen/_13sdp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="Deaths"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/headerDeaths"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_65sdp"
+                        android:text="0"
+                        android:textColor="@color/black_"
+                        android:textSize="@dimen/_13sdp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="Today"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/todey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_65sdp"
+                        android:text="0"
+                        android:textColor="@color/black_"
+                        android:textSize="@dimen/_13sdp" />
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/viewByCountryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amContainer"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="@string/view_by_country"
+            android:textColor="@color/toolbar_gradient_color_1"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+</ScrollView>

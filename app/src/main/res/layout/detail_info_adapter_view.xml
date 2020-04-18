@@ -40,7 +40,7 @@
                 android:textSize="@dimen/_13sdp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/confirmed"
+                android:id="@+id/confirmedTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_65sdp"
@@ -60,7 +60,7 @@
                 android:textSize="@dimen/_13sdp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/recovered"
+                android:id="@+id/recoveredTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_65sdp"
@@ -80,7 +80,7 @@
                 android:textSize="@dimen/_13sdp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/deaths"
+                android:id="@+id/deathsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_65sdp"
