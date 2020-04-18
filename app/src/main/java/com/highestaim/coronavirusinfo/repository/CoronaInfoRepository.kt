@@ -96,9 +96,6 @@ class CoronaInfoRepository(private val coronaVirusInfoService: CoronaVirusInfoSe
                         TypeToken<Map<Any, Any>>() {}.type
                 ).values
 
-                values.forEach{
-                    println(it)
-                }
                // info.value = values as LinkedHashMap<String, CountryInAllCountriesModel?>
 
                 print(response.body())
