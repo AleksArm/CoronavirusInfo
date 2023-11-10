@@ -1,46 +1,47 @@
 package com.highestaim.coronavirusinfo.fragment
 
 import android.os.Bundle
-import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.highestaim.coronavirusinfo.R
 import com.highestaim.coronavirusinfo.adapter.CountriesAdapter
+import com.highestaim.coronavirusinfo.databinding.StatisticFragmentBinding
 import com.highestaim.coronavirusinfo.dto.CoronavirusInfoDto
 import com.highestaim.coronavirusinfo.util.initRecyclerView
-import kotlinx.android.synthetic.main.statistic_fragment.*
-import java.lang.Exception
+import com.highestaim.coronavirusinfo.viewModel.EmptyViewModel
 
 
-class StatisticFragment : BaseFragment() {
+class StatisticFragment : BaseFragment<StatisticFragmentBinding, EmptyViewModel>(
+    EmptyViewModel::class
+) {
 
     private val countryAdapter = CountriesAdapter()
+    override fun getViewBinding(): StatisticFragmentBinding = StatisticFragmentBinding.inflate(layoutInflater)
 
+    override fun initUI(savedInstanceState: Bundle?) {
+        initCountryRecyclerView()
+        setCountries(arguments?.getSerializable("all_info") as ArrayList<CoronavirusInfoDto?>)
+    }
 
-    override fun getLayoutId() = R.layout.statistic_fragment
+    override fun subscribeToViewModel(viewModel: EmptyViewModel) {
+    }
 
-    override fun getTitle() = "Statistic"
+    override fun getTitle() = getString(R.string.label_statistic)
 
     override fun setupToolbar() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initCountryRecyclerView()
-        setCountries(arguments?.getSerializable("all_info") as ArrayList<CoronavirusInfoDto?>)
-    }
-
-
     private fun initCountryRecyclerView() {
-
         val itemDecor = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
-        context?.getDrawable(R.drawable.divider)?.let { itemDecor.setDrawable(it) }
-        countryList.addItemDecoration(itemDecor)
+        ContextCompat.getDrawable(requireContext(),R.drawable.divider)
+            ?.let { itemDecor.setDrawable(it) }
+        binding.countryList.addItemDecoration(itemDecor)
 
-        countryList?.initRecyclerView(context, countryAdapter)
+        binding.countryList.initRecyclerView(context, countryAdapter)
     }
 
     private fun setCountries(coronaInfoCountriesModel: List<CoronavirusInfoDto?>) {
         countryAdapter.countryList = coronaInfoCountriesModel
     }
-
 }

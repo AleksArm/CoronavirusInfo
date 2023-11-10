@@ -5,7 +5,7 @@ import com.highestaim.coronavirusinfo.appServices.PreferenceService
 import com.highestaim.coronavirusinfo.repository.CoronaInfoRepository
 import com.highestaim.coronavirusinfo.service.CoronaVirusInfoService
 import com.highestaim.coronavirusinfo.viewModel.CoronaVirusInfoViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 

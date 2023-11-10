@@ -5,4 +5,5 @@
     <string name="deaths">Deaths:</string>
     <string name="view_by_country"><u>View by country</u></string>
     <string name="home">Home</string>
+    <string name="label_statistic">Statistic</string>
 </resources>

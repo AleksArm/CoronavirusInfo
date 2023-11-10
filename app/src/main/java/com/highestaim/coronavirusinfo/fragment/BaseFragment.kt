@@ -5,28 +5,53 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.highestaim.coronavirusinfo.R
-import kotlinx.android.synthetic.main.fragment_toolbar.view.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.viewbinding.ViewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModelForClass
+import org.koin.core.parameter.ParametersHolder
+import org.koin.core.parameter.emptyParametersHolder
+import kotlin.reflect.KClass
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<VBinding : ViewBinding, VModel : ViewModel>(
+    viewModelClass: KClass<VModel>,
+    savedStateOwner: FragmentSavedStateOwner = FragmentSavedStateOwner.PARENT_ACTIVITY
+) : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(getLayoutId(), container, false)
+    protected lateinit var binding: VBinding
 
-        view.toolbarTitle?.let {
-            it.text = getTitle()
+    protected open val viewModel: VModel by lazy {
+        val storeOwner: ViewModelStoreOwner = when (savedStateOwner) {
+            FragmentSavedStateOwner.SELF -> this
+            FragmentSavedStateOwner.PARENT_ACTIVITY -> activity as ViewModelStoreOwner
+            FragmentSavedStateOwner.PARENT_FRAGMENT -> parentFragment as ViewModelStoreOwner
         }
-        return view
+        viewModelForClass(
+            owner = {
+                storeOwner
+            },
+            parameters = { viewModelParams },
+            clazz = viewModelClass
+        ).value
     }
 
-    abstract override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = getViewBinding()
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? = binding.root
 
-    abstract fun getLayoutId(): Int
+    // override in case custom params needed
+    protected open val viewModelParams: ParametersHolder = emptyParametersHolder()
+
+    protected abstract fun getViewBinding(): VBinding
+
+    protected abstract fun initUI(savedInstanceState: Bundle?)
+
+    protected abstract fun subscribeToViewModel(viewModel: VModel)
 
     abstract fun getTitle(): String
 

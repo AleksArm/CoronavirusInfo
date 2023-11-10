@@ -1,19 +1,16 @@
 package com.highestaim.coronavirusinfo.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
-import com.highestaim.coronavirusinfo.R
+import com.highestaim.coronavirusinfo.databinding.StatisticInofAdapterViewBinding
 import com.highestaim.coronavirusinfo.dto.CoronavirusInfoDto
 import com.highestaim.coronavirusinfo.util.hide
 import com.highestaim.coronavirusinfo.util.initRecyclerView
 import com.highestaim.coronavirusinfo.util.show
 
-import kotlinx.android.synthetic.main.statistic_inof_adapter_view.view.*
 import kotlin.properties.Delegates
 
 class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>(),
@@ -23,51 +20,47 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHold
         autoNotify(old, new) { o, n -> o?.countryName == n?.countryName }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CountriesViewHolder(
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.statistic_inof_adapter_view, parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
+        return CountriesViewHolder(StatisticInofAdapterViewBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+    }
 
     override fun getItemCount() = countryList.size
 
     override fun onBindViewHolder(holder: CountriesViewHolder, position: Int) {
-        val country = countryList[position]
-
-        holder.countryName.text = country?.countryName
-
-        holder.itemView.setOnClickListener {
-            if (holder.detailRecyclerView.isShown) {
-                holder.detailRecyclerView.hide()
-            } else {
-                holder.detailRecyclerView.show()
-            }
-        }
-
-        val menuItemAdapter = holder.detailRecyclerView.adapter as CountriesInfoAdapter?
-
-        country?.info?.let {
-            if (it.isNotEmpty() && it.size != 5)
-                menuItemAdapter?.infoItems = it.subList(it.size - 5, it.size).reversed()
-            else
-                menuItemAdapter?.infoItems = it
-
-            menuItemAdapter?.notifyDataSetChanged()
-        }
-
+        val country = countryList[position] ?: CoronavirusInfoDto()
+        holder.bind(country)
     }
 
 
-    inner class CountriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var countryName: AppCompatTextView = itemView.findViewById(R.id.countryName)
-        var seeMoreButton: ImageView = itemView.findViewById(R.id.seeMore)
-
-        val detailRecyclerView: RecyclerView = itemView.detailRecyclerView
-
-
+    inner class CountriesViewHolder(private val binding: StatisticInofAdapterViewBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            detailRecyclerView.itemAnimator = DefaultItemAnimator()
-            detailRecyclerView.setHasFixedSize(true)
-            detailRecyclerView.initRecyclerView(itemView.context, CountriesInfoAdapter())
+            binding.detailRecyclerView.itemAnimator = DefaultItemAnimator()
+            binding.detailRecyclerView.setHasFixedSize(true)
+            binding.detailRecyclerView.initRecyclerView(itemView.context, CountriesInfoAdapter())
+        }
+
+        @SuppressLint("NotifyDataSetChanged")
+        fun bind(country: CoronavirusInfoDto) {
+            binding.countryName.text = country.countryName
+
+            binding.root.setOnClickListener {
+                if (binding.detailRecyclerView.isShown) {
+                    binding.detailRecyclerView.hide()
+                } else {
+                    binding.detailRecyclerView.show()
+                }
+            }
+
+            val menuItemAdapter = binding.detailRecyclerView.adapter as CountriesInfoAdapter?
+
+            country.info?.let {
+                if (it.isNotEmpty() && it.size != 5)
+                    menuItemAdapter?.infoItems = it.subList(it.size - 5, it.size).reversed()
+                else
+                    menuItemAdapter?.infoItems = it
+
+                menuItemAdapter?.notifyDataSetChanged()
+            }
         }
     }
 
